@@ -10,19 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class JavaApiApplication {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-
+		SpringApplication.run(JavaApiApplication.class, args);
 		
-		System.out.println("digite a lista separando-os por virgula: ");
-		String input = scanner.nextLine();
-		
-		String[] listInput = input.split(",");
-		Float[] list = Arrays.stream(listInput).map(Float::valueOf).toArray(Float[]::new);
-
-		Mean man = new Mean(list);
-		
-		
-		System.out.println(man.getResult());
 	}
 
 }
