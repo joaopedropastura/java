@@ -38,7 +38,7 @@ public class UserController {
     @PostMapping()
     public UserModel newUser(@RequestBody UserModel user){
         return userService.save(user);
-    }
+    }    
 
-    
+
 }
