@@ -11,7 +11,6 @@ import com.joao.java_api.repository.UserRepository;
 @Service
 public class UserService {
     
-
     @Autowired
     private UserRepository userRepository;
 
@@ -27,7 +26,6 @@ public class UserService {
         return (UserModel) this.userRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("User not found"));
     }
-
 
     public List<UserModel> findByName(String name){
         return (List<UserModel>) this.userRepository.findByName(name);

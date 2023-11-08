@@ -1,4 +1,4 @@
-package com.joao.java_api.conotroller;
+package com.joao.java_api.controller;
 
 import java.util.List;
 
@@ -20,7 +20,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
     @GetMapping("")
     public List<UserModel> getAllUser(){
        return (List<UserModel>) userService.findAll();
@@ -36,10 +35,10 @@ public class UserController {
         return userService.findById(id);
     }
 
-
     @PostMapping()
     public UserModel newUser(@RequestBody UserModel user){
-        
         return userService.save(user);
     }
+
+    
 }

@@ -16,13 +16,15 @@ public class UserModel {
 
     @Id
     private String id;
-    private String name;
     private short age;
+    private String name;
     private String email;
-    private String password;
-    private String phoneNumber;
     private Adress adress;
-    private byte userType;
+    private String userName;
+    private String password;
+    private String userType;
+    private String phoneNumber;
+
 
 
     @Data
@@ -36,6 +38,14 @@ public class UserModel {
 
     public UserModel(){}
     
-
+    public UserModel(String name, short age, String email, String pass, String phone, String userName)
+    {
+        this.age = age;
+        this.name = name;
+        this.email = email;
+        this.password = pass;
+        this.userName = userName;
+        this.phoneNumber = phone;
+    }
 
 }
