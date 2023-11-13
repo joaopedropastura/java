@@ -3,11 +3,13 @@ import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } fr
 import { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native'
-import { UtilsContext } from './context'
+// import { UtilsContext } from './context'
 
-import Login from './Login'
-import Register from './Register';
-import Home from './Home';
+// import Login from './src/pages/loginPage/index'
+import Register from './src/pages/registerPage/index'
+
+// import Register from './Register';
+// import Home from './Home';
 
 export default function App() {
   const [data, setData] = useState({newUser: []})
@@ -21,16 +23,10 @@ export default function App() {
  
   return (
     <NavigationContainer>
-      <UtilsContext.Provider value={{data, setData}}>
       <Stack.Navigator>
-        <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  />
-        <Stack.Screen  name="Register">
-          { props => <Register {...props} addUser={addUser}/> }
-        </Stack.Screen>
-
-        <Stack.Screen name="Home" component={Home}  />
+        {/* <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  /> */}
+        <Stack.Screen name="Home" component={Register}  />
       </Stack.Navigator>
-      </UtilsContext.Provider>
     </NavigationContainer>
 
   //   <View style={styles.container}>
