@@ -1,58 +1,69 @@
 import { StyleSheet, Button, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import FormComponent from '../../components/formComponent';
 import UseBind from '../../hooks/useBind';
 
 
 const RegisterPage = () => {
 
-    const [text, onChangeText] = React.useState('Useless Text');
-    const [number, onChangeNumber] = React.useState('');
+    const [cpf, setCpf] = useState('');
+    const [number, onChangeNumber] = useState('');
+    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
+    const [bornDate, setBornDate] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPass, setConfirmPass] = useState('')
 
-    const [phone, setPhone] = UseBind('')
 
-    useEffect(() => {
-        console.log(phone)
-    }, [phone])
 
     return (
         <View>
-            <Text>Register</Text>
-            <FormComponent style={styles.input}
-                label="informe seu telefone" 
-                placeholder="digite aqui seu telefone"
-                value={phone}
+            <FormComponent 
+                placeholder="Nome"
+                value={name}
                 type={number}
+                onChange={setName}
             />
-
-            <TextInput 
-                style={styles.input}
+            <FormComponent 
+                placeholder="CPF"
+                value={cpf}
+                type={number}
+                onChange={setCpf}
+            />
+            <FormComponent 
+                placeholder="Data de nascimento"
+                type={number}
+                value={bornDate}
+                onChange={setBornDate}
+            />
+            <FormComponent 
+                placeholder="Email"
+                value={email}
+                onChange={setEmail}
+            />
+            <FormComponent 
+                placeholder="Telefone"
                 value={phone}
-                {...setPhone}
+                onChange={setPhone}
             />
+        
+            <Text>Crie uma senha:</Text>
+            
 
-
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeNumber}
-                value={number}
-                placeholder="Digite seu nome"
+            <FormComponent 
+                placeholder="Senha"
+                value={password}
+                onChange={setPassword}
             />
             
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeNumber}
-                value={number}
-                placeholder="Digite seu nome"
+            <FormComponent 
+                placeholder="Telefone"
+                value={confirmPass}
+                onChange={setConfirmPass}
             />
             
-            <TextInput
-                style={styles.input}
-                onChangeText={onChangeNumber}
-                value={number}
-                placeholder="Digite seu CPF"
-                keyboardType="numeric"
-                />
+            <Button title='Registrar'/>
 
         </View>
 
