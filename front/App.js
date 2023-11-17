@@ -7,6 +7,7 @@ import { NavigationContainer } from '@react-navigation/native'
 
 // import Login from './src/pages/loginPage/index'
 import Register from './src/pages/registerPage/index'
+import HeaderComponent from './src/components/headerComponent';
 
 // import Register from './Register';
 // import Home from './Home';
@@ -23,7 +24,11 @@ export default function App() {
  
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          header: () => <HeaderComponent />, // Use o componente HeaderComponent como cabeçalho
+        }}
+      >
         {/* <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  /> */}
         <Stack.Screen name="Home" component={Register}  />
       </Stack.Navigator>

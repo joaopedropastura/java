@@ -1,4 +1,4 @@
-import { StyleSheet, Button, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Button, Text, View, Image, TextInput, TouchableOpacity, Pressable } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import FormComponent from '../../components/formComponent';
 import UseBind from '../../hooks/useBind';
@@ -15,10 +15,28 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
 
-
+    const changeContent = () => {
+        console.log('oi')
+    }
 
     return (
         <View>
+            <View style={styles.options}>
+                <View style={styles.option}>
+                    <Pressable onPress={changeContent}>
+                        <Text>Quero comprar</Text>
+                    </Pressable>
+                    <View></View>
+                </View>
+                <View style={styles.option}>
+                    <Pressable>
+                        <Text style={{fontSize: 13}}>Quero vender</Text>
+                    </Pressable>
+                    <View style={styles.selected}></View>
+                </View>
+            </View>
+
+
             <FormComponent 
                 placeholder="Nome"
                 value={name}
@@ -78,6 +96,22 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
     },
+    options: {
+        flexDirection: 'row',
+        gap: 10,
+        height: 40
+    },
+
+    option: {
+        gap: 6
+    },
+    selected: {
+        width: 50,
+        height: 4,
+        backgroundColor: '#BBA9A6',
+        borderRadius: 10,
+        fontSize: 10
+    }
 });
   
 
