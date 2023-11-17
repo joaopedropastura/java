@@ -86,18 +86,19 @@ const RegisterPage = () => {
                 value={confirmPass}
                 onChange={setConfirmPass}
             />
-            
-            <Pressable style={styles.registerBtn}>
-                <Text
-                    style={{color: 'white',
-                    fontSize: 18,
-                    fontWeight: '400',
-                    wordWrap: 'break-word'
+            <View style={styles.registerButtonView}>
+                <Pressable style={styles.registerBtn}>
+                    <Text
+                        style={{color: 'white',
+                        fontSize: 18,
+                        fontWeight: '400',
+                        wordWrap: 'break-word'
                     }}
-                >
-                    Registrar
-                </Text>
-            </Pressable>
+                    >
+                        Registrar
+                    </Text>
+                </Pressable>
+            </View>
 
         </View>
 
@@ -136,6 +137,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#6c6c6c',
         borderRadius: 10,
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+    },
+    registerButtonView: {
+        alignItems: 'center',
+        height: 100,
+        justifyContent: 'center'
     }
 });
   
