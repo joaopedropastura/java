@@ -23,9 +23,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         borderRadius: 10,
-        borderColor: '#6F6F6F61'
+        borderColor: '#6F6F6F61',
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.1)'
     },
     componet: {
-        padding: 10
+        paddingVertical: 10
     }
 });

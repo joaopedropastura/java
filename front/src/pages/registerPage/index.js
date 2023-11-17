@@ -7,7 +7,6 @@ import UseBind from '../../hooks/useBind';
 const RegisterPage = () => {
 
     const [cpf, setCpf] = useState('');
-    const [number, onChangeNumber] = useState('');
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [bornDate, setBornDate] = useState('')
@@ -15,24 +14,34 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
 
-    const changeContent = () => {
-        console.log('oi')
+    const [optionStyle, setOptionStyle] = useState('buyer')
+
+    const changeContent = (item) => {
+        setOptionStyle(item)
+        if(item == 'seller')
+        {
+            setName('CNPJ')
+        }
     }
 
+
     return (
-        <View>
+        <View style={{padding: 10}}>
+            <View style={{height: 70, paddingTop: 25}}>
+                <Text >Dados pessoais</Text>
+            </View>
             <View style={styles.options}>
                 <View style={styles.option}>
-                    <Pressable onPress={changeContent}>
+                    <Pressable onPress={() => changeContent('buyer')}>
                         <Text>Quero comprar</Text>
                     </Pressable>
-                    <View></View>
+                    <View style={optionStyle == "buyer" ? styles.selected : ""}></View>
                 </View>
                 <View style={styles.option}>
-                    <Pressable>
+                    <Pressable onPress={() => changeContent('seller')}>
                         <Text style={{fontSize: 13}}>Quero vender</Text>
                     </Pressable>
-                    <View style={styles.selected}></View>
+                    <View style={optionStyle == "seller" ? styles.selected : ""}></View>
                 </View>
             </View>
 
@@ -40,18 +49,15 @@ const RegisterPage = () => {
             <FormComponent 
                 placeholder="Nome"
                 value={name}
-                type={number}
                 onChange={setName}
             />
             <FormComponent 
                 placeholder="CPF"
                 value={cpf}
-                type={number}
                 onChange={setCpf}
             />
             <FormComponent 
                 placeholder="Data de nascimento"
-                type={number}
                 value={bornDate}
                 onChange={setBornDate}
             />
@@ -81,7 +87,17 @@ const RegisterPage = () => {
                 onChange={setConfirmPass}
             />
             
-            <Button title='Registrar'/>
+            <Pressable style={styles.registerBtn}>
+                <Text
+                    style={{color: 'white',
+                    fontSize: 18,
+                    fontWeight: '400',
+                    wordWrap: 'break-word'
+                    }}
+                >
+                    Registrar
+                </Text>
+            </Pressable>
 
         </View>
 
@@ -93,24 +109,33 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         margin: 12,
-        borderWidth: 1,
-        padding: 10,
+        borderWidth: 1
     },
     options: {
         flexDirection: 'row',
-        gap: 10,
+        gap: 20,
         height: 40
     },
 
     option: {
-        gap: 6
+        gap: 8
     },
     selected: {
         width: 50,
         height: 4,
         backgroundColor: '#BBA9A6',
         borderRadius: 10,
-        fontSize: 10
+        fontSize: 10,
+        
+    },
+    registerBtn: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 50,
+        width: 220,
+        backgroundColor: '#6c6c6c',
+        borderRadius: 10,
+        boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
     }
 });
   
