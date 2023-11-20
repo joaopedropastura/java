@@ -10,6 +10,7 @@ const headerComponent = () => {
     return (
         <View style={styles.component}>
             <SearchIcon/>
+            <SearchIcon style={{color: 'FFFFFF'}} />
             <Image 
                 source={require('../../../assets/logo2.png')}
                 style={{height:50, width: 180}}

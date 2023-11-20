@@ -2,11 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Provider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 // import { UtilsContext } from './context'
 
-// import Login from './src/pages/loginPage/index'
 import Register from './src/pages/registerPage/index'
+import Login from './src/pages/loginPage/index'
 import HeaderComponent from './src/components/headerComponent';
 
 // import Register from './Register';
@@ -28,9 +29,12 @@ export default function App() {
         screenOptions={{
           header: () => <HeaderComponent />, // Use o componente HeaderComponent como cabeçalho
         }}
+
+
       >
         {/* <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  /> */}
-        <Stack.Screen name="Home" component={Register}  />
+        <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  />
+        <Stack.Screen  name="Register" component={Register}  />
       </Stack.Navigator>
     </NavigationContainer>
 

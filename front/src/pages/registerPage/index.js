@@ -2,9 +2,13 @@ import { StyleSheet, Button, Text, View, Image, TextInput, TouchableOpacity, Pre
 import React, { useEffect, useState } from 'react';
 import FormComponent from '../../components/formComponent';
 import UseBind from '../../hooks/useBind';
+import { useDispatch } from "react-redux";
+import Login from '../loginPage';
+import { useNavigation } from '@react-navigation/native'
 
 
 const RegisterPage = () => {
+
 
     const [cpf, setCpf] = useState('');
     const [name, setName] = useState('')
@@ -14,6 +18,8 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
 
+
+    const naviagation = useNavigation()
     const [optionStyle, setOptionStyle] = useState('buyer')
 
     const changeContent = (item) => {
@@ -23,6 +29,8 @@ const RegisterPage = () => {
             setName('CNPJ')
         }
     }
+
+
 
 
     return (
@@ -98,6 +106,11 @@ const RegisterPage = () => {
                         Registrar
                     </Text>
                 </Pressable>
+                <Text>Já possui uma conta?
+                    <Pressable onPress={() => naviagation.navigate('Login')}>
+                        <Text style={{textDecorationLine: 'underline'}}>Faça o login</Text>
+                    </Pressable>
+                </Text>
             </View>
 
         </View>
@@ -141,7 +154,8 @@ const styles = StyleSheet.create({
     registerButtonView: {
         alignItems: 'center',
         height: 100,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        
     }
 });
   

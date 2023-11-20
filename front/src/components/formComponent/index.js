@@ -19,7 +19,7 @@ export default function FormComponent ({label, placeholder, text, value, onChang
 
 const styles = StyleSheet.create({
     input: {
-        height: 40,
+        height: 50,
         borderWidth: 1,
         padding: 10,
         borderRadius: 10,
