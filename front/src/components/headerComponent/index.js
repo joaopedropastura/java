@@ -4,19 +4,21 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
+import MenuIcon from '@mui/icons-material/Menu';
+
 
 const headerComponent = () => {
 
     return (
         <View style={styles.component}>
-            <SearchIcon/>
-            <SearchIcon style={{color: 'FFFFFF'}} />
+            <MenuIcon style={styles.iconColor}/>
+            <SearchIcon style={styles.iconColor}/>
             <Image 
                 source={require('../../../assets/logo2.png')}
                 style={{height:50, width: 180}}
             />
-            <FavoriteBorderIcon/>
-            <ShoppingCartIcon/>
+            <FavoriteBorderIcon style={styles.iconColor}/>
+            <ShoppingCartIcon style={styles.iconColor}/>
 
         </View>
     )
@@ -30,6 +32,9 @@ const styles = StyleSheet.create({
         paddingVertical: 6,
         paddingHorizontal: 12, 
         justifyContent: 'space-between'
+    },
+    iconColor: {
+        color: '6c6c6c'
     }
 })
 

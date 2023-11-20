@@ -1,17 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Provider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
-// import { UtilsContext } from './context'
 
 import Register from './src/pages/registerPage/index'
 import Login from './src/pages/loginPage/index'
 import HeaderComponent from './src/components/headerComponent';
-
-// import Register from './Register';
-// import Home from './Home';
+import Home from './src/pages/homePage/index'
 
 export default function App() {
   const [data, setData] = useState({newUser: []})
@@ -33,6 +28,7 @@ export default function App() {
 
       >
         {/* <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  /> */}
+        <Stack.Screen  name="Home" component={Home}  />
         <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  />
         <Stack.Screen  name="Register" component={Register}  />
       </Stack.Navigator>
