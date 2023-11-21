@@ -17,8 +17,10 @@ const productPage = () => {
                     style={{height:420, width: 'fitContent', borderRadius: 10}}
                     />
                 <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
-                    <Text>Moisés Odorissio</Text>
-                    <Text>Quadro Abaporu</Text>
+                    <View>
+                        <Text>Moisés Odorissio</Text>
+                        <Text style={{fontSize: 18}}>Quadro Abaporu</Text>
+                    </View>
                     <FavoriteBorderIcon style={styles.iconColor}/>
                 </View>
             </View>

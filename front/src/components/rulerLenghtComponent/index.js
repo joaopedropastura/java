@@ -7,7 +7,7 @@ const RulerLenghtComponent = () => {
         <View style={styles.mainFrame}>
             <Text>Escolha o tamanho:(cm)</Text>
             <View style={styles.frame}>
-                <View>
+                <View style={styles.selected}>
                     <Text>21x29</Text>
                 </View>
                 <View>
@@ -42,6 +42,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center'
 
+    },
+    selected: {
+        backgroundColor: ''
     }
 })
 
