@@ -1,4 +1,4 @@
-import { Button, Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Button, Image, StyleSheet } from 'react-native';
 import { useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native'
@@ -25,8 +25,6 @@ export default function App() {
         screenOptions={{
           header: () => <HeaderComponent />, // Use o componente HeaderComponent como cabeçalho
         }}
-
-
       >
         {/* <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  /> */}
         <Stack.Screen  name="Product" component={ProductPage}  />

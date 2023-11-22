@@ -10,6 +10,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 const headerComponent = () => {
 
     return (
+        
         <View style={styles.component}>
             <MenuIcon style={styles.iconColor}/>
             <SearchIcon style={styles.iconColor}/>
@@ -31,7 +32,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 6,
         paddingHorizontal: 12, 
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        width: '100vw',
+        height: 'auto'
     },
     iconColor: {
         color: '6c6c6c'

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Text, View, StyleSheet, Switch, Image, Pressable } from 'react-native';
 
-const RulerLenghtComponent = () => {
+const RulerLenghtComponent = (props) => {
 
     const [optionSize, setOptionSize] = useState('21x29')
-    const [price, setPrice] = useState(299.00)
     
     const changeSize = (size) => {
         setOptionSize(size)
+        props.set(size)
     }
 
     return ( 
@@ -47,7 +47,8 @@ const RulerLenghtComponent = () => {
 const styles = StyleSheet.create({
     mainFrame: {
         gap: 10,
-        height:110
+        height:110,
+        alignItems: 'center'
     },
     frame: {
         height: 45,
@@ -55,18 +56,19 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         padding: 3,
         borderRadius: 10,
-        boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
+        // boxShadow: '0px 2px 2px rgba(0, 0, 0, 0.1)',
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
         backgroundColor: '#D9D9D9',
-        alignItems: 'center'
+        alignItems: 'center',
+        
 
     },
     selected: {
         backgroundColor: '#fff',
-        height: 35,
-        width: 55,
+        height: 38,
+        width: 65,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 10
