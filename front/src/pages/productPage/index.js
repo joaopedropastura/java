@@ -5,31 +5,34 @@ import ProductComponent from '../../components/productComponent';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RulerLenghtComponent from '../../components/rulerLenghtComponent';
 
+
+
 const productPage = () => {
 
+    const [optionSize, setOptionSize] = useState('21x29')
 
-    return ( 
-        <View>
+    return (
+        <View style={{alignItems: 'center'}}>
             <View style={styles.mainFrame}>
-            <View style={{gap: 12}}>
-                <Image
-                    source={require('../../../assets/arts/ABAPORU_375x_crop_center.webp')}
-                    style={{height:420, width: 'fitContent', borderRadius: 10}}
+                <View style={{ gap: 12 }}>
+                    <Image
+                        source={require('../../../assets/arts/ABAPORU_375x_crop_center.webp')}
+                        style={{ height: 420, width: 'fitContent', borderRadius: 10 }}
                     />
-                <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
-                    <View>
-                        <Text>Moisés Odorissio</Text>
-                        <Text style={{fontSize: 18}}>Quadro Abaporu</Text>
+                    <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
+                        <View>
+                            <Text>Moisés Odorissio</Text>
+                            <Text style={{ fontSize: 18 }}>Quadro Abaporu</Text>
+                        </View>
+                        <FavoriteBorderIcon style={styles.iconColor} />
                     </View>
-                    <FavoriteBorderIcon style={styles.iconColor}/>
                 </View>
+                <View style={{height: 80, justifyContent: 'center'}}>
+                    <Text style={{ fontSize: 16 }}>R$299,00</Text>
+                    <Text style={{ fontSize: 10 }}>10x de 29,9</Text>
+                </View>
+                <RulerLenghtComponent />
             </View>
-            <RulerLenghtComponent/>
-            <View style={{height: '6vh'}}>
-                <Text style={{fontSize: 16}}>R$299,00</Text>
-                <Text style={{fontSize: 10}}>10x de 29,9</Text>
-            </View>
-        </View>
         </View>
     )
 
