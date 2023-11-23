@@ -1,17 +1,21 @@
 import { Button, Text, TextInput, View, StyleSheet, Switch, Image, Pressable, ScrollView } from 'react-native';
 import { useState, useContext, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native'
-import ProductComponent from '../../components/productComponent';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RulerLenghtComponent from '../../components/rulerLenghtComponent';
-
+import ArtistPage from '../artistPage';
 
 
 const productPage = () => {
 
     const [optionSize, setOptionSize] = useState('21x29')
     // const []
+    const navigation = useNavigation()
 
+    
+    const goToArtistPage = () => {
+        navigation.navigate('ArtistPage')
+    }
 
     useEffect(() => {
         console.log(optionSize)
@@ -29,7 +33,9 @@ const productPage = () => {
                         />
                         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
                             <View style={{padding: 10}}>
-                                <Text>Moisés Odorissio</Text>
+                                <Pressable onPress={() => goToArtistPage()}>
+                                    <Text>Moisés Odorissio</Text>
+                                </Pressable>
                                 <Text style={{ fontSize: 18 }}>Quadro Abaporu</Text>
                             </View>
                             <FavoriteBorderIcon style={styles.iconColor} />

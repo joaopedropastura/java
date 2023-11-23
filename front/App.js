@@ -8,6 +8,7 @@ import Login from './src/pages/loginPage/index'
 import HeaderComponent from './src/components/headerComponent';
 import Home from './src/pages/homePage/index'
 import ProductPage from './src/pages/productPage'
+import ArtistPage from './src/pages/artistPage';
 
 export default function App() {
   const [data, setData] = useState({newUser: []})
@@ -29,6 +30,7 @@ export default function App() {
         {/* <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  /> */}
         <Stack.Screen  name="Product" component={ProductPage}  />
         <Stack.Screen  name="Home" component={Home}  />
+        <Stack.Screen  name="ArtistPage" component={ArtistPage}  />
         <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  />
         <Stack.Screen  name="Register" component={Register}  />
       </Stack.Navigator>
