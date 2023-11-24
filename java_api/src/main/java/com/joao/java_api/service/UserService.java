@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.joao.java_api.model.UserModel;
 import com.joao.java_api.repository.UserRepository;
 
+
+
+
 @Service
 public class UserService {
     
@@ -37,6 +40,10 @@ public class UserService {
         this.userRepository.deleteById(id);
 
         return user;
+    }
+
+    public UserModel findByEmail(String email) {
+        return (UserModel) this.userRepository.findByEmail(email);
     }
 
 
