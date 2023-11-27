@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,10 +36,15 @@ public class UserController {
         return userService.findById(id);
     }
 
-    @PostMapping()
+    @PostMapping("")
     public UserModel newUser(@RequestBody UserModel user){
         return userService.save(user);
     }    
+
+    @PutMapping("/{id}")
+    public void putUser(@RequestBody UserModel newUser, @PathVariable String id) {
+        // userService.save((String) id, (String) newUser.getName(), (short) newUser.getAge());
+    }
 
 
 }

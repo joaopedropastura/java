@@ -57,14 +57,12 @@ public class AuthService implements UserDetailsService {
         }
     }
 
-
-
-
+    
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserModel resp = this.userService.findByEmail(username);
         if (resp.getEmail().equals(username)) {
-            return resp;
+            return (UserDetails) resp;
         } else {
             throw new UsernameNotFoundException("User not found");
         }
