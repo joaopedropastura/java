@@ -5,7 +5,7 @@ import UseBind from '../../hooks/useBind';
 import { useDispatch } from "react-redux";
 import Login from '../loginPage';
 import { useNavigation } from '@react-navigation/native'
-
+import axios from 'axios'
 
 const RegisterPage = () => {
 
@@ -20,14 +20,38 @@ const RegisterPage = () => {
 
 
     const naviagation = useNavigation()
-    const [optionStyle, setOptionStyle] = useState('buyer')
+    const [option, setOption] = useState('buyer')
 
     const changeContent = (item) => {
-        setOptionStyle(item)
+        setOption(item)
         if(item == 'seller')
         {
             setName('CNPJ')
         }
+    }
+
+    const userRegister = async () => {
+
+        if(!(password && confirmPass))
+            return "as senhas não coincidem"
+        
+        const newUser = {
+            name, 
+            cpf,
+            phoneNumber : phone,
+            age : bornDate,
+            email,
+            password,
+            userType : option
+        }
+        try{
+            const res = await axios.post(`http://localhost:8080/user`, newUser)
+            console.log(res)
+            naviagation.navigate('Home')
+        } catch (error) {
+            console.log(error.response.messsage)
+        }
+
     }
 
 
@@ -43,13 +67,13 @@ const RegisterPage = () => {
                     <Pressable onPress={() => changeContent('buyer')}>
                         <Text>Quero comprar</Text>
                     </Pressable>
-                    <View style={optionStyle == "buyer" ? styles.selected : ""}></View>
+                    <View style={option == "buyer" ? styles.selected : ""}></View>
                 </View>
                 <View style={styles.option}>
                     <Pressable onPress={() => changeContent('seller')}>
                         <Text style={{fontSize: 13}}>Quero vender</Text>
                     </Pressable>
-                    <View style={optionStyle == "seller" ? styles.selected : ""}></View>
+                    <View style={option == "seller" ? styles.selected : ""}></View>
                 </View>
             </View>
 
@@ -95,7 +119,7 @@ const RegisterPage = () => {
                 onChange={setConfirmPass}
             />
             <View style={styles.registerButtonView}>
-                <Pressable style={styles.registerBtn}>
+                <Pressable onPress={() => userRegister()} style={styles.registerBtn}>
                     <Text
                         style={{color: 'white',
                         fontSize: 18,

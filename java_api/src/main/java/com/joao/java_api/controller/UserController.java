@@ -41,6 +41,11 @@ public class UserController {
         return userService.save(user);
     }    
 
+    @PostMapping("/login")
+    public UserModel loginUser(@RequestBody String email){
+        return userService.findByEmail(email);
+    }    
+
     @PutMapping("/{id}")
     public void putUser(@RequestBody UserModel newUser, @PathVariable String id) {
         // userService.save((String) id, (String) newUser.getName(), (short) newUser.getAge());

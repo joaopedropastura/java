@@ -28,11 +28,11 @@ export default function App() {
         }}
       >
         {/* <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  /> */}
+        <Stack.Screen  name="Register" component={Register}  />
         <Stack.Screen  name="Product" component={ProductPage}  />
         <Stack.Screen  name="Home" component={Home}  />
         <Stack.Screen  name="ArtistPage" component={ArtistPage}  />
         <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  />
-        <Stack.Screen  name="Register" component={Register}  />
       </Stack.Navigator>
     </NavigationContainer>
 
