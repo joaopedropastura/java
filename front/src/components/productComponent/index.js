@@ -7,7 +7,9 @@ import rulerLenghtComponent from '../rulerLenghtComponent';
 const ProductComponent = () => {
 
     return (
-        <View style={styles.mainFrame}>
+        <Pressable 
+            style={styles.mainFrame}
+        >
             <View style={{gap: 12}}>
                 <Image
                     source={require('../../../assets/arts/ABAPORU_375x_crop_center.webp')}
@@ -23,7 +25,7 @@ const ProductComponent = () => {
                 <Text style={{fontSize: 16}}>R$299,00</Text>
                 <Text style={{fontSize: 10}}>10x de 29,9</Text>
             </View>
-        </View>
+        </Pressable>
 
     )
 }
