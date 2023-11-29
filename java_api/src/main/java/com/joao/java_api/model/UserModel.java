@@ -48,4 +48,10 @@ public class UserModel {
         this.phoneNumber = phone;
     }
 
+    public UserModel(String password, String email) {
+        this.password = password;
+        this.email = email;
+    }
+
+
 }

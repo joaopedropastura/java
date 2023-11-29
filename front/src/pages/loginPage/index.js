@@ -2,25 +2,30 @@ import { Button, Text, TextInput, View, StyleSheet, Switch, Image, Pressable } f
 import { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import FormComponent from '../../components/formComponent';
+import axios from 'axios';
 
-const Login = (props) => {
+const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
 
     const navigation = useNavigation()
-    const goToHome = () => {
+    const goToHome = async () => {
 
-        let sla = true
-        data.newUser.map((item) => {
-            if (item.email == email && item.password == password) {
-                sla = false
-                return props.navigation.navigate("Home")
-            }
-        })
-        if (sla)
-            return alert('Invalid email or password')
+        const user = {
+            email,
+            password
+        }
+
+        try{
+            const res = await axios.post("http://localhost:8080/user/auth/login", user)
+            sessionStorage.setItem('token', res.data)
+            navigation.navigate("Home")
+        } catch(error) {
+            return "usuario ou senha inválidos!"
+        }
+        
     }
 
     return (
@@ -41,11 +46,11 @@ const Login = (props) => {
             <View style={{justifyContent: 'flex-end'}}>
                 <FormComponent
                     placeholder='Enter your email'
-                    onChangeText={email => setEmail(email)}
+                    onChange={email => setEmail(email)}
                 />
                 <FormComponent
                     placeholder='Enter your password'
-                    onChangeText={password => setPassword(password)}
+                    onChange={password => setPassword(password)}
                     secureTextEntry={true}
                 />
                 <Text style={{ textDecorationLine: 'underline' }}>Esqueci minha senha</Text>

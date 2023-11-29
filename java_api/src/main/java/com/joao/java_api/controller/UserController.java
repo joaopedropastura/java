@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.joao.java_api.model.UserModel;
+import com.joao.java_api.service.AuthService;
 import com.joao.java_api.service.UserService;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
+    @Autowired
+    private AuthService authService;
 
     @Autowired
     private UserService userService;
@@ -41,15 +45,23 @@ public class UserController {
         return userService.save(user);
     }    
 
-    @PostMapping("/login")
-    public UserModel loginUser(@RequestBody String email){
-        return userService.findByEmail(email);
+    @PostMapping("/auth/{login}")
+    public String loginUser(@RequestBody UserModel user){
+        var res = this.userService.findByEmail(user.getEmail());
+        if(res != null){
+            if(res.getPassword().equals(user.getPassword()))
+                return this.authService.createToken(user);
+            return ("Senha ou email incorreta");
+        }
+        return ("parece que você ainda não é cadastrado");
     }    
 
     @PutMapping("/{id}")
     public void putUser(@RequestBody UserModel newUser, @PathVariable String id) {
         // userService.save((String) id, (String) newUser.getName(), (short) newUser.getAge());
     }
+    
+        
 
 
 }
