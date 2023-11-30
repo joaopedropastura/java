@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Document("product")
-public class Product {
+public class ProductModel {
 
     private String productOwner;
     private String name;
@@ -16,5 +16,5 @@ public class Product {
     private String Category;
 
 
-    public Product() {}
+    public ProductModel() {}
 }
