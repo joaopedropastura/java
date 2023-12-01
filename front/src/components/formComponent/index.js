@@ -1,6 +1,6 @@
 import { Text, View, TextInput, StyleSheet } from 'react-native';
 
-export default function FormComponent ({label, placeholder, text, value, onChange, type}) {
+export default function FormComponent ({label, placeholder, text, value, onChange, keyboardType, multiline, numberOfLines}) {
     
     return (
         <View style={styles.componet}>
@@ -10,7 +10,11 @@ export default function FormComponent ({label, placeholder, text, value, onChang
                 onChangeText={onChange}
                 value={value}
                 placeholder={placeholder}
-                keyboardType={type}
+                keyboardType={keyboardType}
+                multiline={multiline}
+                numberOfLines={numberOfLines}
+            
+
             />
         </View>
     )

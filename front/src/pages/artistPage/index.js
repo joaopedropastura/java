@@ -1,6 +1,4 @@
-import { Button, Text, TextInput, View, StyleSheet, Touchable, Switch, Image, Pressable, ScrollView } from 'react-native';
-import { useState, useContext, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native'
+import { Text, View, StyleSheet, Touchable } from 'react-native';
 
 const ArtistPage = () => {
 

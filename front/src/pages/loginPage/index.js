@@ -1,5 +1,5 @@
-import { Button, Text, TextInput, View, StyleSheet, Switch, Image, Pressable } from 'react-native';
-import { useState, useContext } from 'react';
+import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import FormComponent from '../../components/formComponent';
 import axios from 'axios';

@@ -1,79 +1,119 @@
 import FormComponent from "../../components/formComponent"
-import { StyleSheet, Button, Text, View, Image, TextInput, TouchableOpacity, Pressable } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import RulerLenghtComponent from "../../components/rulerLenghtComponent";
-import ImagePicker from 'react-native-image-picker';
+import { StyleSheet, Button, Text, View, Image, Platform, Pressable, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { launchImageLibrary } from 'react-native-image-picker';
+import RulerLenghtComponent from '../../components/rulerLenghtComponent'
+import axios from 'axios'
+
+
 
 const ProductRegisterPage = () => {
 
     const [optionSize, setOptionSize] = useState('21x29')
+    const [imageUri, setImageUri] = useState(null);
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [price, setPrice] = useState('')
 
+    const ImageInput = () => {
 
-    const selectImage = () => {
-        const options = {
-            noData: true,
-        };
-
-        ImagePicker.launchImageLibrary(options, response => {
-            if (response.uri) {
-                console.log('image: ', response);
-            }
-        });
+        if (Platform.OS === 'web') {
+            // Código para input de imagem na web
+            document.getElementById('imageInput').click();
+        } else {
+            // Código para react-native-image-picker em plataformas nativas
+            const options = { noData: true };
+            launchImageLibrary(options, response => {
+                if (response.assets && response.assets[0].uri) {
+                    setImageUri(response.assets[0].uri);
+                }
+            });
+        }
     }
 
+    const handleFileInput = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (loadEvent) => {
+                setImageUri(loadEvent.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    
+    const newProduct = async () => {
+        const product = {
+            title,
+            price,
+            description,
+            size : optionSize
+        }
+        console.log("product",product)
+        try{
+            const res = await axios.post(`http://localhost:8080/product`, product,{
+                headers:{
+                    "Authorization": "Bearer "+sessionStorage.getItem("token")
+                }
+            })
+            console.log(res)
+            navigation.navigate('Home')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
     return (
-        <View>
+        <View style={styles.mainFrame}>
             <FormComponent
-                placeholder={"título do anúncio"}
+                placeholder={"título"}
+                onChange={setTitle}
+            />
+
+            <TextInput
+                style={{
+                    borderWidth: 1,
+                    padding: 10,
+                    borderRadius: 10,
+                    borderColor: '#6F6F6F61',
+                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.1)'
+                }}
+                placeholder={"Descrição"}
+                multiline
+                numberOfLines={4}
+                onChangeText={setDescription}
+
             />
             <FormComponent
                 placeholder={"preço"}
-            />
-            <FormComponent
-                placeholder={"Descrição"}
+                onChange={setPrice}
             />
 
-            <View style={styles.container}>
-                <Button title="Select Image" onPress={selectImage} />
+            <View>
+                <Button title="Select Image" onPress={ImageInput} />
+                {Platform.OS === 'web' && (
+                    <input
+                        id="imageInput"
+                        type="file"
+                        style={{ display: 'none' }}
+                        accept="image/*"
+                        onChange={handleFileInput}
+                    />
+                )}
+                {imageUri && <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />}
             </View>
 
 
-            <View style={styles.mainFrame}>
-                <Text>Escolha o tamanho:(cm)</Text>
-                <View style={styles.frame}>
-                    <Pressable
-                        onPress={() => changeSize('21x29')}
-                        style={optionSize == '21x29' ? styles.selected : ''}
-                    >
-                        <Text>21x29</Text>
-                    </Pressable>
-                    <Pressable
-                        onPress={() => changeSize('29x42')}
-                        style={optionSize == '29x42' ? styles.selected : ''}
-                    >
-                        <Text>29x42</Text>
-                    </Pressable>
-                    <Pressable
-                        onPress={() => changeSize('42x59')}
-                        style={optionSize == '42x59' ? styles.selected : ''}
-                    >
-                        <Text>42x59</Text>
-                    </Pressable>
-                    <Pressable
-                        onPress={() => changeSize('81x119')}
-                        style={optionSize == '81x119' ? styles.selected : ''}
-                    >
-                        <Text>81x119</Text>
-                    </Pressable>
-                </View>
+            <RulerLenghtComponent set={setOptionSize} />
+
+            <View style={{ alignItems: 'center' }}>
+                <Pressable onPress={() => newProduct()}
+                    style={styles.registerBtn}
+                >
+                    <Text style={{ color: '#fff' }}>Cadastrar</Text>
+                </Pressable>
             </View>
-
-
-            <Pressable onPress={() => navigation.navigate('Register')}
-            style={styles.registerBtn}
-            >
-                <Text style={{ color: '#fff' }}>Cadastrar</Text>
-            </Pressable>
 
         </View>
     )
@@ -110,6 +150,13 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
     },
+
+    mainFrame: {
+        padding: 15,
+
+
+
+    }
 })
 
 export default ProductRegisterPage

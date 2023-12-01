@@ -11,9 +11,10 @@ import lombok.Data;
 public class ProductModel {
 
     private String productOwner;
-    private String name;
+    private String title;
     private float price;
-    private String Category;
+    private String description;
+    private String size;
 
 
     public ProductModel() {}

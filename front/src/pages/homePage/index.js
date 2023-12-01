@@ -1,5 +1,5 @@
 
-import { Button, Text, TextInput, View, StyleSheet, Switch, Image, Pressable } from 'react-native';
+import { Button, Text, TextInput, View } from 'react-native';
 import { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import ProductComponent from '../../components/productComponent';

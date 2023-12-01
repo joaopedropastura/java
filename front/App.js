@@ -30,9 +30,9 @@ export default function App() {
       >
         {/* <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  /> */}
         <Stack.Screen  name="ProductRegister" component={ProductRegisterPage}  />
-        <Stack.Screen  name="Home" component={Home}  />
-        <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  />
         <Stack.Screen  name="Register" component={Register}  />
+        <Stack.Screen options={{headerShown:false}} name="Login" component={Login}  />
+        <Stack.Screen  name="Home" component={Home}  />
         <Stack.Screen  name="Product" component={ProductPage}  />
         <Stack.Screen  name="ArtistPage" component={ArtistPage}  />
       </Stack.Navigator>
