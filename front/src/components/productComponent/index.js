@@ -4,26 +4,27 @@ import { useNavigation } from '@react-navigation/native'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import rulerLenghtComponent from '../rulerLenghtComponent';
 
-const ProductComponent = () => {
-
+const ProductComponent = ({ data }) => {
+    console.log(data.image)
     return (
+        
         <Pressable 
             style={styles.mainFrame}
         >
-            <View style={{gap: 12}}>
+            <View style={{gap: 12, alignItems: 'center'}}>
                 <Image
-                    source={require('../../../assets/arts/ABAPORU_375x_crop_center.webp')}
-                    style={{height:200, width: '18vh', borderRadius: 10}}
+                    source={{uri : data.image}}
+                    style={{height:200, width: '23vh', borderRadius: 10}}
                     />
                 <View style={{justifyContent: 'space-between', flexDirection: 'row'}}>
-                    <Text>Quadro Abaporu</Text>
+                    <Text>{data.title}</Text>
                     <FavoriteBorderIcon style={styles.iconColor}/>
                 </View>
             </View>
 
             <View style={{height: '6vh'}}>
-                <Text style={{fontSize: 16}}>R$299,00</Text>
-                <Text style={{fontSize: 10}}>10x de 29,9</Text>
+                <Text style={{fontSize: 16}}>R${data.price}</Text>
+                <Text style={{fontSize: 10}}>10x {data.price/10}</Text>
             </View>
         </Pressable>
 
@@ -34,9 +35,9 @@ const ProductComponent = () => {
 const styles = StyleSheet.create({
     mainFrame: {
         height: 350,
-        width: '45vw',
+        width: '43vw',
         borderWidth: 1,
-        padding: 10,
+        padding: 5,
         borderRadius: 10,
         borderColor: '#6F6F6F61',
         boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.1)',

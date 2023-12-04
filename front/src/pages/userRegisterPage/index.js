@@ -114,7 +114,7 @@ const RegisterPage = () => {
             />
             
             <FormComponent 
-                placeholder="Telefone"
+                placeholder="Confirme sua senha"
                 value={confirmPass}
                 onChange={setConfirmPass}
             />

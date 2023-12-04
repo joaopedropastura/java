@@ -14,6 +14,7 @@ const ProductRegisterPage = () => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+    const [image, setImage] = useState('')
 
     const ImageInput = () => {
 
@@ -48,7 +49,8 @@ const ProductRegisterPage = () => {
             title,
             price,
             description,
-            size : optionSize
+            size : optionSize,
+            image
         }
         console.log("product",product)
         try{
@@ -88,6 +90,10 @@ const ProductRegisterPage = () => {
             <FormComponent
                 placeholder={"preço"}
                 onChange={setPrice}
+            />
+            <FormComponent
+                placeholder={"url da imagem"}
+                onChange={setImage}
             />
 
             <View>

@@ -15,6 +15,7 @@ public class ProductModel {
     private float price;
     private String description;
     private String size;
+    private String image;
 
 
     public ProductModel() {}

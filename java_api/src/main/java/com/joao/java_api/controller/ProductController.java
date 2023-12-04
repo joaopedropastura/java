@@ -68,6 +68,7 @@ public class ProductController {
 
     @PostMapping("")
     public ProductModel newProduct(@RequestBody ProductModel product) {
+        
         return this.productService.save(product);
     }
 }
